@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+spec:
+  selector:
+    app: nginx   
+  ports:
+    - protocol: TCP
+      port: 80    # Port to expose on the Service
+      targetPort: 80  # Port that the Service forwards traffic to on the Pods
+  type: ClusterIP  # Expose the Service internally within the cluster
