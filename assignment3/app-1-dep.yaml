@@ -16,9 +16,6 @@ spec:
     spec:
       containers:
       - name: app-1
-        image: hashicorp/http-echo
-        args:
-          - "-text=Hello World from [app-1-dep-$(hostname)]!"
+        image: ghcr.io/denoslab/ensf400-sample-app:v1
         ports:
-          - name: http
-            containerPort: 80
+          - containerPort: 80

@@ -8,5 +8,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80    # Port to expose on the Service
-      targetPort: 80  # Port that the Service forwards traffic to on the Pods
+      targetPort: 5678  # Port that the Service forwards traffic to on the Pods
   type: ClusterIP  # Expose the Service internally within the cluster
