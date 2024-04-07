@@ -22,8 +22,12 @@ spec:
         volumeMounts:
           - name: nginx-config-file
             mountPath: /etc/nginx/conf.d
+            # subPath: default.conf
             readOnly: true
       volumes:
         - name: nginx-config-file
           configMap:
             name: nginx-configmap
+            items:
+              - key: nginx.cfg
+                path: default.conf
