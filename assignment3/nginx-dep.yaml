@@ -2,8 +2,6 @@
 # kind: Deployment
 # metadata:
 #   name: nginx-dep
-#   labels:
-#     app: nginx
 # spec:
 #   replicas: 5
 #   selector:
@@ -13,6 +11,7 @@
 #     metadata:
 #       labels:
 #         app: nginx
+#         run: nginx-svc
 #     spec:
 #       containers:
 #       - name: nginx
@@ -21,8 +20,8 @@
 #         - containerPort: 80
 #         volumeMounts:
 #           - name: nginx-config-file
-#             mountPath: /etc/nginx/conf.d
-#             subPath: default.conf
+#             mountPath: /etc/nginx/nginx.conf
+#             subPath: nginx.cfg
 #             readOnly: true
 #       volumes:
 #         - name: nginx-config-file
@@ -30,7 +29,7 @@
 #             name: nginx-configmap
 #             items:
 #               - key: nginx.cfg
-#                 path: default.conf
+#                 path: nginx.cfg
 
 apiVersion: apps/v1
 kind: Deployment
@@ -61,3 +60,6 @@ spec:
         - name: nginx-config-file
           configMap:
             name: nginx-configmap
+            items: 
+              - key: nginx.cfg
+                path: nginx.cfg
